@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
-const healthcareProvidersRoutes = require("../Routes/healthcareProvidersRoutes");
+const adminRoutes = require("../Routes/adminRoutes");
 
 const serverCreation = () => {
   try {
@@ -9,7 +9,7 @@ const serverCreation = () => {
     app.use(cors());
     app.use(express.json());
 
-    app.use("/provider", healthcareProvidersRoutes);
+    app.use("/admin", adminRoutes);
 
     const server = http.createServer(app);
     return server;

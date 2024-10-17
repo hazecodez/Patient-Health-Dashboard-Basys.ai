@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const authorizationSchema = new mongoose.Schema(
+const authorizationRequestSchema = new mongoose.Schema(
   {
     patientId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -8,14 +8,6 @@ const authorizationSchema = new mongoose.Schema(
       ref: "Patient",
     },
     treatment: {
-      type: String,
-      required: true,
-    },
-    insurancePlan: {
-      type: String,
-      required: true,
-    },
-    diagnosisCode: {
       type: String,
       required: true,
     },
@@ -32,6 +24,6 @@ const authorizationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Authorization = mongoose.model("Authorization", authorizationSchema);
+const AuthorizationReqs = mongoose.model("AuthorizationRequests", authorizationRequestSchema);
 
-module.exports = Authorization;
+module.exports = AuthorizationReqs;
