@@ -16,7 +16,8 @@ router.post("/login", login);
 router.get("/patients", adminAuth, getPatients);
 router.post("/add_patient", adminAuth, addPatient);
 router.get("/patient_details/:id", adminAuth, patientDetails);
-router.get("/authorizations", adminAuth, getAuthorizationRequests);
+
 router.post("/authorization", adminAuth, requestPriorAuthorization);
+router.get("/authorizations", adminAuth, getAuthorizationRequests);
 
 module.exports = router;
