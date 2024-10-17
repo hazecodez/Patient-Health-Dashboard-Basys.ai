@@ -1,6 +1,6 @@
 
 
-export default function Dashboard() {
+export default function PatientsDashboard() {
   return (
     <div>
       Dashboard
