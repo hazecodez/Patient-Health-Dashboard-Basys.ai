@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const healthcareProvidersRoutes = require("../Routes/healthcareProvidersRoutes");
 
 const serverCreation = () => {
   try {
@@ -8,7 +9,7 @@ const serverCreation = () => {
     app.use(cors());
     app.use(express.json());
 
-    app.get("/", (req, res) => res.send("Hello World"));
+    app.use("/provider", healthcareProvidersRoutes);
 
     const server = http.createServer(app);
     return server;
@@ -16,6 +17,5 @@ const serverCreation = () => {
     console.log("server creation error: ", error);
   }
 };
-
 
 module.exports = serverCreation;
