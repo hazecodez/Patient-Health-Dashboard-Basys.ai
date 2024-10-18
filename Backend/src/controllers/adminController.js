@@ -100,17 +100,20 @@ exports.requestPriorAuthorization = async (req, res) => {
 
 exports.getAuthorizationRequests = async (req, res) => {
   try {
-    const filter = {};
-    if (req.query.patientId) {
-      filter.patientId = req.query.patientId;
-    }
-    if (req.query.status) {
-      filter.status = req.query.status;
-    }
+    const { search } = req.query;
 
-    const authorizationRequests = await AuthorizationReqs.find(filter)
-      .populate("patientId", "name age")
-      .sort({ createdAt: -1 });
+    const searchFilter = search
+      ? {
+          $or: [
+            { status: { $regex: search, $options: "i" } },
+            { name: { $regex: search, $options: "i" } },
+          ],
+        }
+      : {};
+
+    const authorizationRequests = await AuthorizationReqs.find(
+      searchFilter
+    ).sort({ createdAt: -1 });
 
     res.status(200).json(authorizationRequests);
   } catch (error) {
