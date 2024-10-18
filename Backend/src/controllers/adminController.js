@@ -49,6 +49,7 @@ exports.getPatients = async (req, res) => {
     const searchFilter = search
       ? {
           name: { $regex: search, $options: "i" },
+          condition: { $regex: search, $options: "i" },
         }
       : {};
 
