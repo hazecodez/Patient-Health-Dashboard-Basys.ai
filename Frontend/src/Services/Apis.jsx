@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use(
 );
 
 export async function adminLogin(data) {
-  try {
+  try {  
     const response = await axiosInstance.post("/login", data);
     return response;
   } catch (error) {
@@ -30,6 +30,7 @@ export async function adminLogin(data) {
 
 export async function getPatients(search = "", page = 1, limit = 10) {
   try {
+    
     const response = await axiosInstance.get("/patients", {
       params: {
         search,
@@ -37,6 +38,8 @@ export async function getPatients(search = "", page = 1, limit = 10) {
         limit,
       },
     });
+  
+    
     return response;
   } catch (error) {
     console.log(error);
