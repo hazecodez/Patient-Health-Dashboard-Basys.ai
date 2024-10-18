@@ -16,14 +16,12 @@ export default function PatientsDashboard() {
     const fetchPatients = async () => {
       setLoading(true);
       try {
-        const response = await getPatients(search, page);        
+        const response = await getPatients(search, page);
         if (response.data) {
-          setTimeout(() => {
-            setpatients(response.data.patients);
-            setTotalPatients(response.data.totalPatients);
-            setTotalPages(response.data.totalPages);
-            setLoading(false);
-          }, 1000);
+          setpatients(response.data.patients);
+          setTotalPatients(response.data.totalPatients);
+          setTotalPages(response.data.totalPages);
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error fetching Patients:", error);
@@ -31,7 +29,7 @@ export default function PatientsDashboard() {
       }
     };
     fetchPatients();
-  }, [search,page]);
+  }, [search, page]);
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
@@ -72,17 +70,23 @@ export default function PatientsDashboard() {
           <div className="flex flex-1 items-center justify-between">
             <div>
               <p className="text-sm text-gray-700">
-                Showing <span className="font-medium">{(page - 1) * 10 + 1}</span> to{" "}
-                <span className="font-medium">{Math.min(page * 10, totalPatients)}</span> of{" "}
-                <span className="font-medium">{totalPatients}</span> results
+                Showing{" "}
+                <span className="font-medium">{(page - 1) * 10 + 1}</span> to{" "}
+                <span className="font-medium">
+                  {Math.min(page * 10, totalPatients)}
+                </span>{" "}
+                of <span className="font-medium">{totalPatients}</span> results
               </p>
             </div>
             <div>
-              <nav aria-label="Pagination" className="isolate inline-flex -space-x-px rounded-md shadow-sm">
+              <nav
+                aria-label="Pagination"
+                className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+              >
                 <button
                   onClick={() => handlePageChange(page - 1)}
                   disabled={page === 1}
-                  className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                  className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                 >
                   Previous
                 </button>
@@ -93,7 +97,7 @@ export default function PatientsDashboard() {
                     onClick={() => handlePageChange(index + 1)}
                     className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                       page === index + 1
-                        ? "bg-indigo-600 text-white"
+                        ? "bg-gray-900 text-white"
                         : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     }`}
                   >
@@ -103,7 +107,7 @@ export default function PatientsDashboard() {
                 <button
                   onClick={() => handlePageChange(page + 1)}
                   disabled={page === totalPages}
-                  className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                  className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                 >
                   Next
                 </button>

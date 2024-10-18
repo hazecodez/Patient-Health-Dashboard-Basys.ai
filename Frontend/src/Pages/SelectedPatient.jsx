@@ -77,7 +77,7 @@ export default function SelectedPatient() {
 
             <button
               onClick={() => navigate(`/request/${patient._id}`)}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white hover:text-black transition-colors duration-500 bg-gray-700 rounded-lg hover:bg-white focus:ring-4 focus:outline-none  dark:bg-gray-600 dark:hover:bg-white "
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white hover:text-black hover:border-2 transition-colors duration-500 bg-gray-700 rounded-lg hover:bg-white focus:ring-4 focus:outline-none  dark:bg-gray-600 dark:hover:bg-white "
             >
               Request Authorization
               <svg

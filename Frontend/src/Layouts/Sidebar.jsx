@@ -43,6 +43,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isActive }) => {
         </li>
         <hr />
         
+        
       </ul>
     </div>
   );
