@@ -45,7 +45,7 @@ exports.addPatient = async (req, res) => {
 
 exports.getPatients = async (req, res) => {
   try {
-    const { search, page = 1, limit = 10 } = req.query;
+    const { search, page = 1, limit = 9 } = req.query;
     const searchFilter = search
       ? {
           name: { $regex: search, $options: "i" },
