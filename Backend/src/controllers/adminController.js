@@ -48,8 +48,10 @@ exports.getPatients = async (req, res) => {
     const { search, page = 1, limit = 9 } = req.query;
     const searchFilter = search
       ? {
-          name: { $regex: search, $options: "i" },
-          condition: { $regex: search, $options: "i" },
+          $or: [
+            { name: { $regex: search, $options: "i" } },
+            { condition: { $regex: search, $options: "i" } },
+          ],
         }
       : {};
 
@@ -72,9 +74,9 @@ exports.getPatients = async (req, res) => {
 };
 
 exports.patientDetails = async (req, res) => {
-  try {   
+  try {
     const patient = await Patient.findById(req.params.id);
-    
+
     if (!patient) {
       return res.status(404).json({ message: "No patient found" });
     }
