@@ -7,6 +7,10 @@ const authorizationRequestSchema = new mongoose.Schema(
       required: true,
       ref: "Patient",
     },
+    name: {
+      type: String,
+      required: true,
+    },
     treatment: {
       type: String,
       required: true,
