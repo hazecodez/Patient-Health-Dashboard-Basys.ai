@@ -11,6 +11,18 @@ const authorizationRequestSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    insurancePlan: {
+      type: String,
+      required: true,
+    },
+    diagnosisCode: {
+      type: String,
+      required: true,
+    },
+    dateOfService: {
+      type: Date,
+      required: true,
+    },
     doctorNotes: {
       type: String,
       required: true,
@@ -24,6 +36,9 @@ const authorizationRequestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const AuthorizationReqs = mongoose.model("AuthorizationRequests", authorizationRequestSchema);
+const AuthorizationReqs = mongoose.model(
+  "AuthorizationRequests",
+  authorizationRequestSchema
+);
 
 module.exports = AuthorizationReqs;
