@@ -9,14 +9,14 @@ exports.login = async (req, res) => {
   try {
     const adminExist = await Admin.findOne({ name: name });
     if (!adminExist) {
-      return res.status(400).json({ message: "Admin not found" });
+      return res.status(200).json({ message: "Admin not found" });
     }
     const isPasswordValid = await comparePasswords(
       password,
       adminExist.password
     );
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Incorrect Password !!" });
+      return res.status(200).json({ message: "Incorrect Password !!" });
     }
     const token = generateToken(adminExist._id);
 
